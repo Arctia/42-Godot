@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://5a7tbwfch6io"]
+
+[ext_resource type="Script" path="res://src/entity/taxi.gd" id="1_fw6om"]
+[ext_resource type="Texture2D" uid="uid://cc7rew2mmsds4" path="res://assets/atlas/Taxi.png" id="2_g4r2m"]
+[ext_resource type="Script" path="res://src/entity/taxi_sprite.gd" id="3_i2nt3"]
+
+[node name="Taxi" type="CharacterBody2D"]
+script = ExtResource("1_fw6om")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_g4r2m")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+script = ExtResource("3_i2nt3")
