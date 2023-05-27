@@ -1,15 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b1oxx7rvx4sw8"]
 
 [ext_resource type="Script" path="res://src/scenes/mandatory.gd" id="1_kdsi1"]
+[ext_resource type="Theme" uid="uid://hsqcmqaiw52k" path="res://src/theme.tres" id="1_lv1k5"]
 [ext_resource type="PackedScene" uid="uid://5a7tbwfch6io" path="res://src/entity/taxi.tscn" id="1_lxxic"]
-
-[sub_resource type="Theme" id="Theme_f5wi7"]
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0.329412, 0.00784314, 0.239216, 1)
-Label/colors/font_shadow_color = Color(0.392157, 0.243137, 0.141176, 0.905882)
-Label/constants/outline_size = 4
-Label/constants/shadow_offset_x = 1
-Label/constants/shadow_outline_size = 5
 
 [node name="Mandatory" type="Control"]
 custom_minimum_size = Vector2(640, 0)
@@ -19,7 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_f5wi7")
+theme = ExtResource("1_lv1k5")
 script = ExtResource("1_kdsi1")
 
 [node name="scene" type="Node2D" parent="."]
@@ -51,3 +44,17 @@ text = "Speed: "
 unique_name_in_owner = true
 layout_mode = 2
 text = "0 m/s"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -292.0
+offset_bottom = 136.0
+grow_horizontal = 0
+theme = ExtResource("1_lv1k5")
+text = "Bonus:
+ - 8 directions, up/down sprite rotated 
+ - thrust and friction
+ - speedmeter"

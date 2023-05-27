@@ -1,0 +1,106 @@
+[gd_scene load_steps=16 format=3 uid="uid://e8d0nn1dvw1i"]
+
+[ext_resource type="Script" path="res://src/entity/ashes.gd" id="1_fgbhb"]
+[ext_resource type="Texture2D" uid="uid://crkbp8nhvb1fj" path="res://assets/Ashes-0001.png" id="1_x0fea"]
+[ext_resource type="Texture2D" uid="uid://ca1ykweh60xyh" path="res://assets/Ashes-eyes-0001.png" id="2_b7xc0"]
+[ext_resource type="Texture2D" uid="uid://cskws7el8vmva" path="res://assets/Ashes-eyes-0002.png" id="3_rrafg"]
+[ext_resource type="Texture2D" uid="uid://cps1t4bvihhwn" path="res://assets/Ashes-eyes-0003.png" id="4_govbj"]
+[ext_resource type="Texture2D" uid="uid://nnpj6gljljrk" path="res://assets/Eyes8.png" id="6_jg2ws"]
+[ext_resource type="Texture2D" uid="uid://ccjtw7ykf6dag" path="res://assets/Eyes7.png" id="7_hxc3s"]
+[ext_resource type="Texture2D" uid="uid://i7dt5ycvnlf0" path="res://assets/Eyes9.png" id="8_yy1q7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cwuru"]
+radius = 30.0167
+
+[sub_resource type="ImageTexture" id="ImageTexture_vu5br"]
+
+[sub_resource type="Animation" id="Animation_7nu3u"]
+resource_name = "Close_Eyes"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_rrafg"), ExtResource("4_govbj"), ExtResource("4_govbj"), SubResource("ImageTexture_vu5br")]
+}
+
+[sub_resource type="Animation" id="Animation_ihn0x"]
+resource_name = "Idle"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_jg2ws"), ExtResource("7_hxc3s"), ExtResource("6_jg2ws"), ExtResource("8_yy1q7"), ExtResource("6_jg2ws")]
+}
+
+[sub_resource type="Animation" id="Animation_srh32"]
+resource_name = "Open_Eyes"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("3_rrafg"), ExtResource("4_govbj"), ExtResource("3_rrafg"), ExtResource("2_b7xc0")]
+}
+
+[sub_resource type="Animation" id="Animation_cxcq3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Eyes:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_b7xc0")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b76vh"]
+_data = {
+"Close_Eyes": SubResource("Animation_7nu3u"),
+"Idle": SubResource("Animation_ihn0x"),
+"Open_Eyes": SubResource("Animation_srh32"),
+"RESET": SubResource("Animation_cxcq3")
+}
+
+[node name="Ashes" type="CharacterBody2D"]
+script = ExtResource("1_fgbhb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+texture = ExtResource("1_x0fea")
+
+[node name="Eyes" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_b7xc0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_cwuru")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_b76vh")
+}
