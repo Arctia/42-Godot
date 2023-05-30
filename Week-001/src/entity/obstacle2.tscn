@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpsxd2y43lmgi"]
+
+[ext_resource type="Texture2D" uid="uid://cwajbh2i17ny0" path="res://assets/objects/Obstacles2.png" id="1_i211l"]
+
+[node name="obstacle2" type="RigidBody2D"]
+mass = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_i211l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-1, -8, -7, 3, -7, 6, -5, 8, 5, 8, 7, 6, 7, 3, 1, -8)

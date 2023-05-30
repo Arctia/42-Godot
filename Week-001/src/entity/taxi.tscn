@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://src/entity/taxi_sprite.gd" id="3_i2nt3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_em28q"]
-radius = 8.0
+radius = 6.0
 
 [node name="Taxi" type="CharacterBody2D"]
 script = ExtResource("1_fw6om")
