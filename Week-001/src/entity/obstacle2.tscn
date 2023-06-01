@@ -1,13 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://bpsxd2y43lmgi"]
+[gd_scene load_steps=3 format=3 uid="uid://bpsxd2y43lmgi"]
 
 [ext_resource type="Texture2D" uid="uid://cwajbh2i17ny0" path="res://assets/objects/Obstacles2.png" id="1_i211l"]
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pujbp"]
+friction = 0.21
+bounce = 0.25
+
 [node name="obstacle2" type="RigidBody2D"]
 mass = 3.0
+inertia = 0.5
+physics_material_override = SubResource("PhysicsMaterial_pujbp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_i211l")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-1, -8, -7, 3, -7, 6, -5, 8, 5, 8, 7, 6, 7, 3, 1, -8)
+polygon = PackedVector2Array(-5, 1, 5, 1, 7, 3, 7, 6, 5, 8, -5, 8, -7, 6, -7, 3)

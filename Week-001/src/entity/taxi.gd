@@ -33,14 +33,15 @@ func _physics_process(delta):
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
 	velocity.y = clampf(velocity.y, -MAX_SPEED, MAX_SPEED)
 	
-	var coll:KinematicCollision2D = move_and_collide(velocity * delta)
-	if coll:
-#		var c_angle:float = deg_to_rad(coll.get_angle())
-#
-#		if (c_angle > 45 and c_angle < 135) or (c_angle < -45 and c_angle > -135):
-#			velocity.y = 0
-#		elif (c_angle > 135 and c_angle < 225) or (c_angle > -45 and c_angle < 45):
-#			velocity.x = 0
-#		else:
-#			velocity = Vector2.ZERO
+	do_collision(move_and_collide(velocity * delta))
+
+func do_collision(coll:KinematicCollision2D):
+	if not coll: return
+	var obj:Object = coll.get_collider()
+	if obj.get_class() in ["TileMap", "StaticBody2D"]:
 		velocity = Vector2.ZERO
+	elif obj.get_class() == "RigidBody2D":
+		obj.apply_force(velocity*4)
+		velocity.x -= velocity.x / 10
+		velocity.y -= velocity.y / 10
+	
