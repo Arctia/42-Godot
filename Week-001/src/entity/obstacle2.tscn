@@ -4,7 +4,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_pujbp"]
 friction = 0.21
-bounce = 0.25
 
 [node name="obstacle2" type="RigidBody2D"]
 mass = 3.0
