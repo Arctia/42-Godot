@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b1oxx7rvx4sw8"]
+[gd_scene load_steps=17 format=3 uid="uid://b1oxx7rvx4sw8"]
 
 [ext_resource type="Script" path="res://src/scenes/mandatory.gd" id="1_kdsi1"]
 [ext_resource type="Theme" uid="uid://hsqcmqaiw52k" path="res://src/theme.tres" id="1_lv1k5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b2ttl820421dd" path="res://src/scenes/tile_map.tscn" id="3_xr4au"]
 [ext_resource type="PackedScene" uid="uid://bpsxd2y43lmgi" path="res://src/entity/obstacle2.tscn" id="5_vjki0"]
 [ext_resource type="PackedScene" uid="uid://d2d83xbee54md" path="res://src/entity/obstacle3.tscn" id="6_e6rhb"]
+[ext_resource type="PackedScene" uid="uid://n3kvmi2egdom" path="res://src/hud/manometro.tscn" id="7_h8we3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1vtel"]
 size = Vector2(246, 677)
@@ -19,7 +20,163 @@ size = Vector2(1212, 192)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhxel"]
 size = Vector2(1217, 306.5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mwps4"]
+bg_color = Color(0.0509804, 0.0156863, 0.027451, 0.803922)
+
+[sub_resource type="Animation" id="Animation_pwpp1"]
+resource_name = "GameOver"
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.7)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.9)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOver:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.4)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOver:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_tm455"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameOver:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameOver:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameOver:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameOver:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameOver:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PauseHover/HBoxContainer/Label:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xu0ns"]
+resource_name = "Pause_Anim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PauseHover/HBoxContainer/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1),
+"transitions": PackedFloat32Array(1, 1, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.360784), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_46c76"]
+_data = {
+"GameOver": SubResource("Animation_pwpp1"),
+"Pause_Anim": SubResource("Animation_xu0ns"),
+"RESET": SubResource("Animation_tm455")
+}
+
 [node name="Mandatory" type="Control"]
+process_mode = 3
 custom_minimum_size = Vector2(640, 0)
 layout_mode = 3
 anchors_preset = 15
@@ -31,6 +188,7 @@ theme = ExtResource("1_lv1k5")
 script = ExtResource("1_kdsi1")
 
 [node name="scene" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="TileMap" parent="scene" instance=ExtResource("3_xr4au")]
 rotation = -0.000194534
@@ -122,8 +280,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = -40.0
+offset_top = -68.0
 offset_right = 118.0
+offset_bottom = -28.0
 grow_vertical = 0
 theme_override_constants/separation = 5
 
@@ -135,6 +294,28 @@ text = "Speed: "
 unique_name_in_owner = true
 layout_mode = 2
 text = "0 m/s"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+z_index = 999
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -43.0
+offset_right = 117.0
+offset_bottom = -3.0
+grow_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Meter: "
+
+[node name="lbl_meters_value" type="Label" parent="HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0 m"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 z_index = 999
@@ -151,3 +332,75 @@ text = "Bonus:
  - add a green tile square
  - add alpha to some tiles of the map
  - add a shader to the ball to make the outline"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Manometro" parent="." instance=ExtResource("7_h8we3")]
+unique_name_in_owner = true
+process_mode = 1
+z_index = 50
+position = Vector2(66, 507)
+
+[node name="GameOver" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 4000
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mwps4")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="GameOver"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="GameOver/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="GameOver/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "To Title"
+
+[node name="PauseHover" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+z_index = 4000
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mwps4")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PauseHover"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="PauseHover/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="PauseHover/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "To Title"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+process_priority = 1
+libraries = {
+"": SubResource("AnimationLibrary_46c76")
+}
+
+[connection signal="pressed" from="GameOver/HBoxContainer/Button" to="." method="_on_btn_title_pressed"]
+[connection signal="pressed" from="PauseHover/HBoxContainer/Button" to="." method="_on_btn_title_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

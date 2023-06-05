@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @export var ACC:float = 0
 @export var MAX_SPEED:float = 400
+@export var MAX_FUEL:float = 40
+
+@export var fuel:float = 1
+
 var FRICTION:float
 
 func _ready():
@@ -10,6 +14,9 @@ func _ready():
 func _physics_process(delta):
 	var xaxis = Input.get_axis("move_left", "move_right")
 	var yaxis = Input.get_axis("move_up", "move_down")
+	
+	if (xaxis or yaxis) and fuel <= 0: xaxis = 0; yaxis = 0; fuel = 0
+	elif (xaxis or yaxis) and fuel > 0: fuel -= 0.01
 	
 	if xaxis and yaxis:
 		velocity.x += xaxis * ACC * cos(deg_to_rad(45))
