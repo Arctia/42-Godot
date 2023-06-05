@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://d1qkvsvsdgboc"]
+
+[ext_resource type="PackedScene" uid="uid://e8d0nn1dvw1i" path="res://src/entity/ashes.tscn" id="1_rests"]
+[ext_resource type="Theme" uid="uid://hsqcmqaiw52k" path="res://src/theme.tres" id="1_v36v4"]
+[ext_resource type="Texture2D" uid="uid://bdo1agqw87k3e" path="res://assets/sfondo.png" id="1_ytbv4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qg3a"]
+size = Vector2(1193, 155)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mtf0"]
+size = Vector2(164, 698)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deily"]
+size = Vector2(110, 592)
+
+[node name="Bonus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_v36v4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -63.0
+offset_right = 1152.0
+offset_bottom = 702.0
+texture = ExtResource("1_ytbv4")
+stretch_mode = 2
+
+[node name="Ashes" parent="." instance=ExtResource("1_rests")]
+position = Vector2(135, -46)
+ACC = 33.0
+MAX_SPEED = 600.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 475)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(586.5, 93.5)
+shape = SubResource("RectangleShape2D_0qg3a")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-96, -176)
+shape = SubResource("RectangleShape2D_5mtf0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1221, -225)
+shape = SubResource("RectangleShape2D_deily")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -292.0
+offset_bottom = 136.0
+grow_horizontal = 0
+text = "Bonus:
+ - idle animation at 5th second,
+   staring into you.
+ - close/open eyes on movement test"

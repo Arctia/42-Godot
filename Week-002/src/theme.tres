@@ -1,0 +1,15 @@
+[gd_resource type="Theme" format=3 uid="uid://hsqcmqaiw52k"]
+
+[resource]
+Label/colors/font_color = Color(0.882353, 0.882353, 0.882353, 1)
+Label/colors/font_outline_color = Color(0.329412, 0.00784314, 0.239216, 1)
+Label/colors/font_shadow_color = Color(0.392157, 0.243137, 0.141176, 0.905882)
+Label/constants/outline_size = 4
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_outline_size = 5
+RichTextLabel/colors/default_color = Color(0.882353, 0.882353, 0.882353, 1)
+RichTextLabel/colors/font_outline_color = Color(0.329412, 0.00784314, 0.239216, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.392157, 0.243137, 0.141176, 0.905882)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_outline_size = 5
