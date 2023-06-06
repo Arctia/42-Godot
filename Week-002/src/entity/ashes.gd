@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 @export var ACC:float = 0
 @export var MAX_SPEED:float = 400
+@export var JUMP:float = -700
 var FRICTION:float
 var moving:bool = false
 var idle:float = 0.0
 
-const jump_acc:float = -200
 var gravity:float = ProjectSettings.get_setting("physics/2d/default_gravity") *1.5
+var is_jumping:bool = true
 
 func _ready():
 	FRICTION = ACC
@@ -20,6 +21,7 @@ func _physics_process(delta):
 	velocity.x = clampf(velocity.x, -MAX_SPEED, MAX_SPEED)
 	
 	if not is_on_floor(): velocity.y += gravity * delta
+	elif Input.is_action_just_pressed("jump"): velocity.y += JUMP
 	
 	self.check_anim()
 	self.rotating(delta)
@@ -50,4 +52,3 @@ func close_eyes():
 	if moving: return
 	moving = true
 	$AnimationPlayer.play("Close_Eyes")
-
