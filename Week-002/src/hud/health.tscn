@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6urff"]
 shader = ExtResource("2_fr5jb")
 shader_parameter/height = 5.5
-shader_parameter/frequency = 2.0
+shader_parameter/frequency = 3.0
 shader_parameter/speed = 1.25
 
 [node name="health" type="Control"]

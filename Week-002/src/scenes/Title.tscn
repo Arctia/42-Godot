@@ -37,7 +37,7 @@ text = " Mandatory + Bonus "
 [node name="Button2" type="Button" parent="CenterContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 64)
 layout_mode = 2
-text = " Bonus Sprite"
+text = " Bonus"
 
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="CenterContainer/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
