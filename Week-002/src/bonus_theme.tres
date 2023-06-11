@@ -1,0 +1,61 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bnwrqp6qwolop"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3672"]
+bg_color = Color(0.368627, 0.368627, 0.368627, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.796078, 0.796078, 0.796078, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ge363"]
+bg_color = Color(0.00392157, 0.0156863, 0.0392157, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 3
+border_color = Color(0.796078, 0.796078, 0.796078, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_83byc"]
+bg_color = Color(0.4, 0.4, 0.4, 0.662745)
+border_width_left = 1
+border_width_top = 3
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.796078, 0.796078, 0.796078, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+anti_aliasing = false
+
+[resource]
+Button/colors/font_color = Color(0.882353, 0.882353, 0.882353, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_outline_color = Color(0.329412, 0.00784314, 0.239216, 1)
+Button/constants/outline_size = 5
+Button/styles/hover = SubResource("StyleBoxFlat_i3672")
+Button/styles/normal = SubResource("StyleBoxFlat_ge363")
+Button/styles/pressed = SubResource("StyleBoxFlat_83byc")
+Label/colors/font_color = Color(0.882353, 0.882353, 0.882353, 1)
+Label/colors/font_outline_color = Color(0.329412, 0.00784314, 0.239216, 1)
+Label/colors/font_shadow_color = Color(0.392157, 0.243137, 0.141176, 0.905882)
+Label/constants/outline_size = 4
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_outline_size = 5
+RichTextLabel/colors/default_color = Color(0.882353, 0.882353, 0.882353, 1)
+RichTextLabel/colors/font_outline_color = Color(0.329412, 0.00784314, 0.239216, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.392157, 0.243137, 0.141176, 0.905882)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_outline_size = 5

@@ -1,13 +1,28 @@
-[gd_scene load_steps=16 format=3 uid="uid://e8d0nn1dvw1i"]
+[gd_scene load_steps=20 format=3 uid="uid://e8d0nn1dvw1i"]
 
 [ext_resource type="Script" path="res://src/entity/ashes.gd" id="1_fgbhb"]
 [ext_resource type="Texture2D" uid="uid://crkbp8nhvb1fj" path="res://assets/Ashes-0001.png" id="1_x0fea"]
 [ext_resource type="Texture2D" uid="uid://ca1ykweh60xyh" path="res://assets/Ashes-eyes-0001.png" id="2_b7xc0"]
+[ext_resource type="Shader" path="res://src/entity/ashes.gdshader" id="2_hw6ie"]
 [ext_resource type="Texture2D" uid="uid://cskws7el8vmva" path="res://assets/Ashes-eyes-0002.png" id="3_rrafg"]
 [ext_resource type="Texture2D" uid="uid://cps1t4bvihhwn" path="res://assets/Ashes-eyes-0003.png" id="4_govbj"]
 [ext_resource type="Texture2D" uid="uid://nnpj6gljljrk" path="res://assets/Eyes8.png" id="6_jg2ws"]
 [ext_resource type="Texture2D" uid="uid://ccjtw7ykf6dag" path="res://assets/Eyes7.png" id="7_hxc3s"]
 [ext_resource type="Texture2D" uid="uid://i7dt5ycvnlf0" path="res://assets/Eyes9.png" id="8_yy1q7"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yodud"]
+frequency = 0.009
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u371j"]
+width = 32
+height = 32
+as_normal_map = true
+bump_strength = 1.0
+noise = SubResource("FastNoiseLite_yodud")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jo2vy"]
+shader = ExtResource("2_hw6ie")
+shader_parameter/noise = SubResource("NoiseTexture2D_u371j")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cwuru"]
 radius = 30.0167
@@ -85,11 +100,12 @@ _data = {
 "RESET": SubResource("Animation_cxcq3")
 }
 
-[node name="Ashes" type="CharacterBody2D"]
+[node name="Soot" type="CharacterBody2D"]
 script = ExtResource("1_fgbhb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
+material = SubResource("ShaderMaterial_jo2vy")
 texture = ExtResource("1_x0fea")
 
 [node name="Eyes" type="Sprite2D" parent="."]
@@ -97,7 +113,6 @@ texture_filter = 1
 texture = ExtResource("2_b7xc0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("CircleShape2D_cwuru")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

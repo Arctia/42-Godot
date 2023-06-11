@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://diuc6yi7akuuu"]
+
+[ext_resource type="Texture2D" uid="uid://dfvb1nwn4xv7o" path="res://assets/HUD/Health/Health_bg.png" id="1_wfdid"]
+[ext_resource type="Shader" path="res://src/hud/health.gdshader" id="2_fr5jb"]
+[ext_resource type="Texture2D" uid="uid://cpkh2tng4t4bj" path="res://assets/HUD/Health/Health_fill_g.png" id="3_b7xbh"]
+[ext_resource type="Texture2D" uid="uid://cy7xkyktthju7" path="res://assets/HUD/Health/Health_lu.png" id="3_waddc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6urff"]
+shader = ExtResource("2_fr5jb")
+shader_parameter/height = 5.5
+shader_parameter/frequency = 2.0
+shader_parameter/speed = 1.25
+
+[node name="health" type="Control"]
+texture_filter = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1088.0
+offset_bottom = -584.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_wfdid")
+
+[node name="bar" type="TextureProgressBar" parent="."]
+material = SubResource("ShaderMaterial_6urff")
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 256.0
+scale = Vector2(0.25, 0.25)
+value = 80.0
+fill_mode = 3
+texture_progress = ExtResource("3_b7xbh")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_waddc")

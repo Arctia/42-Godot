@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://bfduqwsqy65v2"]
+
+[ext_resource type="Texture2D" uid="uid://crkbp8nhvb1fj" path="res://assets/Ashes-0001.png" id="1_4tgot"]
+[ext_resource type="Shader" path="res://src/entity/ash.gdshader" id="1_qwaem"]
+[ext_resource type="Script" path="res://src/entity/ash.gd" id="3_iwnnr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t1d3x"]
+frequency = 0.04
+fractal_octaves = 8
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_162pe"]
+width = 32
+height = 32
+invert = true
+generate_mipmaps = false
+seamless = true
+seamless_blend_skirt = 1.0
+as_normal_map = true
+bump_strength = 1.0
+normalize = false
+noise = SubResource("FastNoiseLite_t1d3x")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f5bel"]
+shader = ExtResource("1_qwaem")
+shader_parameter/noise = SubResource("NoiseTexture2D_162pe")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hj04p"]
+radius = 24.0
+
+[node name="ash" type="Sprite2D"]
+texture_filter = 1
+material = SubResource("ShaderMaterial_f5bel")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_4tgot")
+script = ExtResource("3_iwnnr")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("CircleShape2D_hj04p")

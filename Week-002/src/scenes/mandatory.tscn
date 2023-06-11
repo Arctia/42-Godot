@@ -208,6 +208,7 @@ disable_mode = 2
 motion_mode = 1
 ACC = 8.0
 MAX_SPEED = 600.0
+fuel = 37.0
 
 [node name="Node2D" type="StaticBody2D" parent="scene"]
 
@@ -328,10 +329,8 @@ offset_bottom = 136.0
 grow_horizontal = 0
 theme = ExtResource("1_lv1k5")
 text = "Bonus:
- - add a ball as another obstacle (different physics)
- - add a green tile square
- - add alpha to some tiles of the map
- - add a shader to the ball to make the outline"
+ - Pause system (press ESC)
+ - ..."
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
