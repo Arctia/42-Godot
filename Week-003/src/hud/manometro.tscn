@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://n3kvmi2egdom"]
+
+[ext_resource type="Texture2D" uid="uid://dfh0yksvw53jh" path="res://assets/HUD/1685957404508_Tachimetro.png" id="1_xgy1p"]
+[ext_resource type="Script" path="res://src/hud/manometro.gd" id="2_2pf60"]
+[ext_resource type="Texture2D" uid="uid://dgs4mgvhwx5if" path="res://assets/HUD/lancetta.png" id="3_jqt2f"]
+[ext_resource type="Theme" uid="uid://hsqcmqaiw52k" path="res://src/theme.tres" id="4_k6wh5"]
+
+[node name="Manometro" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_xgy1p")
+script = ExtResource("2_2pf60")
+
+[node name="Arrow" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("3_jqt2f")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_left = -29.0
+offset_top = 25.0
+offset_right = 32.0
+offset_bottom = 39.0
+
+[node name="lbl_perc" type="Label" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_k6wh5")
+theme_override_colors/font_color = Color(1, 0.466667, 0, 1)
+theme_override_font_sizes/font_size = 7
+text = "100%"

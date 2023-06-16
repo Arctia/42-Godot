@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://d1qkvsvsdgboc"]
+
+[ext_resource type="PackedScene" uid="uid://e8d0nn1dvw1i" path="res://src/entity/ashes.tscn" id="1_rests"]
+[ext_resource type="Theme" uid="uid://bnwrqp6qwolop" path="res://src/bonus_theme.tres" id="1_yqpjo"]
+[ext_resource type="Texture2D" uid="uid://bdo1agqw87k3e" path="res://assets/sfondo.png" id="1_ytbv4"]
+[ext_resource type="Script" path="res://src/scenes/bonus.gd" id="2_3yqk7"]
+[ext_resource type="PackedScene" uid="uid://diuc6yi7akuuu" path="res://src/hud/health.tscn" id="4_6fyov"]
+[ext_resource type="PackedScene" uid="uid://bfduqwsqy65v2" path="res://src/entity/ash.tscn" id="6_tlqwo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qg3a"]
+size = Vector2(1193, 155)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mtf0"]
+size = Vector2(164, 698)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deily"]
+size = Vector2(110, 592)
+
+[node name="Bonus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yqpjo")
+script = ExtResource("2_3yqk7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -63.0
+offset_right = 1152.0
+offset_bottom = 702.0
+texture = ExtResource("1_ytbv4")
+stretch_mode = 2
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="ash" parent="Node2D" instance=ExtResource("6_tlqwo")]
+position = Vector2(544, 393)
+value = 300
+
+[node name="ash2" parent="Node2D" instance=ExtResource("6_tlqwo")]
+position = Vector2(397, 292)
+value = 300
+
+[node name="ash3" parent="Node2D" instance=ExtResource("6_tlqwo")]
+position = Vector2(869, 454)
+value = 400
+
+[node name="Ashes" parent="." instance=ExtResource("1_rests")]
+position = Vector2(135, -46)
+ACC = 33.0
+MAX_SPEED = 600.0
+ashes_full = 5000.0
+ashes_amount = 4500.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 475)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(586.5, 93.5)
+shape = SubResource("RectangleShape2D_0qg3a")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-96, -176)
+shape = SubResource("RectangleShape2D_5mtf0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1221, -225)
+shape = SubResource("RectangleShape2D_deily")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -292.0
+offset_bottom = 136.0
+grow_horizontal = 0
+text = "Bonus:
+ - Ampoule  fuel container (?)
+ - Cute shaders (?)
+ - Even soot can jump, right?
+     [ press SPACE ]"
+
+[node name="health" parent="." instance=ExtResource("4_6fyov")]
+modulate = Color(1, 1, 1.05, 1)
+layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="btn_left" type="Button" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = 569.0
+offset_right = 92.0
+offset_bottom = 635.0
+focus_mode = 0
+toggle_mode = true
+text = "<"
+
+[node name="btn_right" type="Button" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 175.0
+offset_top = 569.0
+offset_right = 249.0
+offset_bottom = 635.0
+focus_mode = 0
+toggle_mode = true
+text = ">"
+
+[node name="btn_jump" type="Button" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 97.0
+offset_top = 535.0
+offset_right = 171.0
+offset_bottom = 601.0
+focus_mode = 0
+toggle_mode = true
+text = "^"
+
+[connection signal="consume_ashes" from="Ashes" to="." method="_on_ashes_consume_ashes"]
