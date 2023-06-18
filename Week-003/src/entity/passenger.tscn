@@ -1,11 +1,26 @@
 [gd_scene load_steps=8 format=3 uid="uid://eefpfciqdyit"]
 
 [ext_resource type="Script" path="res://src/entity/passenger.gd" id="1_hssys"]
-[ext_resource type="Texture2D" uid="uid://bvxbbjfn5trgc" path="res://assets/objects/pax2.png" id="3_vjqdv"]
+[ext_resource type="Texture2D" uid="uid://2gdip3dqx3ls" path="res://assets/objects/pax4.png" id="2_kvbk4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y2ji1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_os0l3"]
+
+[sub_resource type="Animation" id="Animation_1d5pa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_jmodl"]
 resource_name = "jumping"
@@ -24,21 +39,6 @@ tracks/0/keys = {
 "values": [Vector2(0, 0), Vector2(0, -4), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_1d5pa"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m0twk"]
 _data = {
 "RESET": SubResource("Animation_1d5pa"),
@@ -50,7 +50,7 @@ script = ExtResource("1_hssys")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_y2ji1")
-texture = ExtResource("3_vjqdv")
+texture = ExtResource("2_kvbk4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.68, 1.8)

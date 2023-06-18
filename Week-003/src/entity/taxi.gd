@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var ACC:float = 0
-@export var MAX_SPEED:float = 400
+@export var MAX_SPEED:float = 100
 @export var MAX_FUEL:float = 40
 
 @export var fuel:float = 1
@@ -56,4 +56,3 @@ func do_collision(coll:KinematicCollision2D):
 		obj.apply_force(velocity*4)
 		velocity.x -= velocity.x / 10
 		velocity.y -= velocity.y / 10
-	

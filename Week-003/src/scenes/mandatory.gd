@@ -6,13 +6,16 @@ extends Control
 
 var meters:float = 0
 var gameover:bool = false
+var active_spot = null
 
 #--- Process methods ----------------------------------------------------------#
 #--- Process methods
 #------------------------------------------------------------------------------#
  
 func _ready() -> void:
+	%lbl_score2.text = "hi-score: " + str(GL.high_score)
 	initialize()
+	$scene/Taxi/AnimationPlayer.play("arrow_anim")
 
 func _process(delta) -> void:
 	if Input.is_action_just_pressed("pause"): _set_pause()
@@ -23,6 +26,7 @@ func _process(delta) -> void:
 	move_camera()
 	check_passengers()
 	check_score()
+	set_arrow()
 
 func initialize() -> void:
 	%Manometro.max_fuel = %Taxi.MAX_FUEL
@@ -46,6 +50,7 @@ func manometro_info() -> void:
 func check_death() -> void:
 	if %Taxi.fuel <= 0 and not self.gameover: 
 		self.gameover = true
+		set_score()
 		$AnimationPlayer.play("GameOver")
 
 func _on_btn_title_pressed() -> void:
@@ -98,8 +103,10 @@ func _on_passenger_passenger_in(diff) -> void:
 	
 	var choiche = randi_range(0, len(elements) - 1)
 	
-	elements[choiche].score = int((diff * meters) / 4)
-	elements[choiche]._activate()
+	self.active_spot = elements[choiche]
+	active_spot.score = int((diff * meters) / 4)
+	active_spot._activate()
+	
 	raise_difficulty()
 
 func raise_difficulty() -> void:
@@ -108,8 +115,28 @@ func raise_difficulty() -> void:
 		child._stop_animation()
 
 func _on_spot_release() -> void:
+	self.active_spot = null
 	for child in %passengers.get_children(): 
 		child._play_animation()
 
 func check_score() -> void:
-	%lbl_score.text = "score: " + str(%Taxi.score)
+	%lbl_score.text = "   score: " + str(%Taxi.score)
+
+func _on_button_2_pressed() -> void:
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://src/scenes/mandatory.tscn")
+
+func set_score() -> void:
+	if %Taxi.score > GL.high_score:
+		%lbl_result.text = "NEW HIGH SCORE!! " + str(%Taxi.score)
+		GL.high_score = %Taxi.score
+		%lbl_score2.text = "hi-score: " + str(GL.high_score)
+	else:
+		%lbl_result.text = "score: " + str(%Taxi.score) + " retry to beat " + str(GL.high_score)
+
+func set_arrow() -> void:
+	if active_spot != null:
+		%arrow.visible = true
+		%arrow.rotation = %Taxi.position.angle_to_point(Vector2(active_spot.position.x + 16, active_spot.position.y + 20)) - deg_to_rad(45)
+	else:
+		%arrow.visible = false
